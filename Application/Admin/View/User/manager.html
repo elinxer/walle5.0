@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 页面框架 -->
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header well" data-original-title>
+			<h2><i class="icon-user"></i>网站管理员</h2>
+			<div class="box-icon">
+				<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+				<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+				<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+			</div>
+		</div>
+		<!-- 页面内容 -->
+		<div class="box-content">
+		<div style="float:left;"><h3>网站管理员</h3></div>
+		<div style="float:right;width:30%">
+			<a href="{:U('User/add_manager')}" class="btn btn-large">添加管理员</a>
+		</div>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+			<table class="table table-bordered table-hover" style="width:80%;">
+				<thead>
+				<tr>
+					<td>用户名</td><td>邮箱Email</td><td>注册时间</td><td>最后登录时间</td><td>注册IP</td><td>操作</td>
+				</tr>
+				</thead>
+				<tbody>
+				<foreach name="manager" item="m">
+				<tr>
+					<td>{$m.name}</td><td>{$m.email}</td>
+					<td>{$m.reg_time|change_time=$m.reg_time}</td>
+					<td>{$m.last_login_time|change_time=$m.last_login_time}</td>
+					<td>{$m.reg_ip}</td><td><a href="{:U('User/edit_manager', array('uid'=>$m['uid']))}">编辑</a>&nbsp;<a href="{:U('User/delete_manager', array('uid'=>$m['uid']))}" onclick="return confirm('删除？');">删除</a></td>
+				</tr>
+				</foreach>
+				</tbody>
+			</table>
+		</div>
+	</div><!--/span-->
+
+</div><!--/row-->	
+</block>

@@ -1,0 +1,43 @@
+<!-- left menu starts -->
+<div class="span2 main-menu-span">
+	<div class="well nav-collapse sidebar-nav">
+		<ul class="nav nav-tabs nav-stacked main-menu">
+			<li class="nav-header hidden-tablet">主要功能</li>
+			<li><a class="ajax-link" href="{:U('Admin/Index/index')}"><i class="icon-home"></i><span class="hidden-tablet"> 管理首页</span></a></li>
+
+			
+
+			<li><a class="ajax-link" href="{:U('Function/show')}"><i class="icon-edit"></i><span class="hidden-tablet"> 功能推送</span></a></li>
+
+			<li><a class="ajax-link" href="{:U('Billtype/index')}"><i class="icon-list-alt"></i><span class="hidden-tablet"> 账单类型</span></a></li>
+			
+			<li><a class="ajax-link" href="{:U('Nav/nav')}"><i class="icon-eye-open"></i><span class="hidden-tablet"> 定义功能</span></a></li>
+			<!-- <li><a class="ajax-link" href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
+			<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li> -->
+
+			<if condition="$user['name'] =='admin'">
+			<li><a class="ajax-link" href="{:U('Nav/nav')}"><i class="icon-eye-open"></i><span class="hidden-tablet"> 定义功能</span></a></li>
+			<li class="nav-header hidden-tablet">常规功能</li>
+			<li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
+
+			<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
+
+			
+			<li><a class="ajax-link" href="{:U('Rbac/index')}"><i class="icon-th"></i><span class="hidden-tablet"> 权限管理</span></a></li>
+
+			<!-- <li><a href="{:U('User/manager')}"><i class="icon-lock"></i><span class="hidden-tablet"> 网站管理员</span></a></li> -->
+			<li><a href="{:U('User/user_manage')}"><i class="icon-user"></i><span class="hidden-tablet"> 用户中心</span></a></li>
+
+			<li><a href="{:U('Config/index')}"><i class="icon-cog"></i><span class="hidden-tablet"> 系统设置</span></a></li>
+
+			<li><a class="ajax-link" href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> 文件管理</span></a></li>
+			
+			<li><a class="ajax-link" href="icon.html"><i class="icon-briefcase"></i><span class="hidden-tablet"> 数据备份</span></a></li>
+			</if>
+			
+			<li><a href="{:U('Tour/index')}"><i class="icon-globe"></i><span class="hidden-tablet"> 功能导航</span></a></li>
+		</ul>
+		<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
+	</div><!--/.well -->
+</div><!--/span-->
+<!-- left menu ends -->

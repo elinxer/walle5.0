@@ -1,0 +1,145 @@
+<extend name="Public/base" />
+<block name="content">
+<div class="box-content">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active"><a href="#info">系统设置</a></li>
+		<li><a href="#show">显示设置</a></li>
+		<li><a href="#owner">自定义</a></li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active" id="info">
+		<form action="{:U('Config/base')}" method="post" enctype="multipart/form-data">
+			<table class="table table-bordered table-hover">
+			<thead >
+				<tr><th style="width:15%;text-align:center;">名称</th><th  style="text-align:left;">内容</th></tr>
+			</thead>
+			<tbody>
+				<tr><td  style="text-align:right;">站点名称</td><td>
+				<input type="text" name="site_name" value="{$config.site_name}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">站点标题</td><td>
+				<input type="text" name="site_title" value="{$config.site_title}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">站点关键字</td><td>
+				<input type="text" name="site_keywords" value="{$config.site_keywords}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">站点描述</td><td>
+				<input type="text" name="site_description" value="{$config.site_description}" class="span6 typeahead "></td></tr>
+				
+				<tr><td  style="text-align:right;">ICP 备案书号</td><td>
+				<input type="text" name="site_icp" value="{$config.site_icp}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">客服电话</td><td>
+				<input type="text" name="site_phone" value="{$config.site_phone}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">官方邮箱</td><td>
+				<input type="text" name="site_email" value="{$config.site_email}" class="span6 typeahead "></td></tr>
+
+				<tr><td  style="text-align:right;">客服QQ</td><td>
+				<input type="text" name="site_qq" value="{$config.site_qq}" class="span6 typeahead ">多个客服的QQ号码请以半角逗号（,）分隔，如果需要设定昵称则在号码后跟 /昵称。</td></tr>
+
+				<tr><td  style="text-align:right;">站点标志</td><td>
+				<input type="file" name="site_logo" value="" class="span6 typeahead ">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="{$config.site_logo}" alt="logo" /></td></tr>
+				
+				<tr><td  style="text-align:right;">站点模板</td><td>
+				<select id="selectError3" name="site_template">
+				<option>default</option>
+				<option>blue</option>
+				<option>green</option>
+				
+			  	</select></td></tr>
+
+				<tr><td  style="text-align:right;">开启/关闭网站</td><td>
+				<if condition="$config.site_off_on == 'on'">
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_off_on" checked="">
+				<else/>
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_off_on" >
+				</if>
+				</td></tr>
+
+				<tr><td  style="text-align:right;">开启/关闭前端登陆</td><td>
+				<if condition="$config.site_login == 'on'">
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_login" checked="">
+				<else/>
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_login" >
+				</if>
+				</td></tr>
+
+				<tr><td  style="text-align:right;">URL重写</td><td>
+				<if condition="$config.site_url_rewrite == 'on'">
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_url_rewrite" checked="">
+				<else/><input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_url_rewrite" ></if>
+				</td></tr>
+
+				<tr><td  style="text-align:right;">开启/关闭站点地图</td><td>
+				<if condition="$config.site_map == 'on'">
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_map" checked="">
+				<else/>
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_map"></if>
+				</td></tr>
+
+				<tr><td style="text-align:right;">开启/关闭后台登录验证码</td><td>
+				<if condition="$config.site_verify == 'on'">
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_verify" checked="">
+				<else/>
+				<input data-no-uniform="true" type="checkbox" class="iphone-toggle" name="site_verify">
+				</if>
+				</td></tr>
+
+				<tr><td style="text-align:right;">统计/代码调用</td><td>
+				<textarea style="width:300px;height:100px;" name="site_content">{$config.site_content}</textarea></td>
+
+				<tr><td></td><td>
+					<input type="submit" value="提交" class="btn btn-large btn-primary"></td>
+				</tr>
+			</tbody>
+			</table>
+		</form>
+		</div>
+		<div class="tab-pane" id="show">
+		<form action="{:U('Config/show_config')}" method="post" >
+		<table class="table table-bordered table-hover">
+			<thead >
+				<tr><th style="width:15%;text-align:center;">名称</th><th style="text-align:left;">内容</th></tr>
+			</thead>
+			<tbody>
+			<foreach name='show_config' item='show_config'>
+			<tr><td  style="text-align:right;">{$show_config.title}</td><td>
+			<input type="text" name="{$show_config.name}" value="{$show_config.value}" class="span6 typeahead "></td></tr>
+			</foreach>
+			<tr><td></td><td>
+			<input type="submit" value="提交" class="btn btn-large btn-primary" onclick="subForm();"></td>
+				</tr>
+			</tbody>
+		</table>
+		</form>
+		</div>
+		<div class="tab-pane" id="owner">
+		<form action="{:U('Config/custom')}" method="post" >
+		<table class="table table-bordered table-hover">
+			<thead >
+				<tr><th style="width:15%;text-align:center;">名称</th><th style="text-align:left;">内容</th></tr>
+			</thead>
+			<tbody>
+				<tr><td  style="text-align:right;">中文名称</td><td>
+				<input type="text" name="title" class="span6 typeahead "></td></tr>
+				<tr><td  style="text-align:right;">英文名称(设置值)</td><td>
+				<input type="text" name="name" class="span6 typeahead "></td></tr>
+				<tr><td  style="text-align:right;">配置值</td><td>
+				<input type="text" name="value" class="span6 typeahead "></td></tr>
+				<tr><td  style="text-align:right;">属于(输入英文)</td><td>
+				<input type="text" name="type" class="span6 typeahead "></td></tr>
+
+				<tr><td></td><td>
+				<input type="submit" value="提交" class="btn btn-large btn-primary" >
+				</td>
+				</tr>
+			</tbody>
+		</table>
+		</form>
+		</div>
+	</div>
+</div>					
+</block>

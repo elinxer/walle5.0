@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+<block name="content">
+<div>
+<table class="table">
+	<thead>
+		<tr>
+			<td><h2>{$meta_title}</h2></td><td><a href="{:U('User/manager')}">返回列表</a></td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr>
+			<td></td><td></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<form action="" method="post">
+<table class="table" style="width:30%;">
+	<thead>
+		<tr>
+			<td><h2></h2></td><td></td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr>
+			<td>管理员名称</td><td><input type="text" name="username" value="{$manager.name}"></td>
+		</tr>
+		<tr>
+			<td>邮箱Email</td><td><input type="text" name="email" value="{$manager.email}"></td>
+		</tr>
+		<tr>
+			<td>旧密码</td><td><input type="text" name="oldpwd"></td>
+		</tr>
+		<tr>
+			<td>新密码</td><td><input type="text" name="newpwd"></td>
+		</tr>
+	</tbody>
+</table>
+<div style="text-align:right;width:25%;"><input type="submit" value="保存" class="btn btn-large"></div>
+</form>
+</block>

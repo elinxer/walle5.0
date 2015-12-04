@@ -1,0 +1,25 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 导航 -->
+<div>
+	<table class="table table-bordered">
+		<thead><tr><td>功能推送</td></tr></thead>
+		<tbody>
+		<tr>
+		<td style="text-align:center;">功能名称</td><td>顺序</td><td style="text-align:center;">状态</td><td>&nbsp;&nbsp;操作</td>
+		</tr>
+		<foreach name="function" item="function">
+		<tr>
+			<td style="text-align:center;"><if condition="$function['type'] == 0">{$function.title}<else/>--{$function.title}</if></td>
+			<td>{$function.sort}</td>
+			<td style="text-align:center;"><if condition="$function['status']"><span class="btn btn-success">已推送</span><else/><span class="btn btn-danger">未推送</span></if></td>
+			<td>
+				<a href="{:U('Function/push' ,array('id'=>$function['id'],'status'=>1))}" class="btn">推送</a>&nbsp;&nbsp;<a href="{:U('Function/push' ,array('id'=>$function['id'],'status'=>0))}" class="btn">取消推送</a>
+			</td>
+		</tr>
+		</foreach>
+		<tr><td></td><td></td><td></tr>
+		</tbody>
+	</table>
+</div>
+</block>

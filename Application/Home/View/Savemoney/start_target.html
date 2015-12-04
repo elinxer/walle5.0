@@ -1,0 +1,49 @@
+<extend name="Public/base" />
+<block name="content">
+<div id="main">
+	<p class="btn btn-info">开启一个存款目标</p>
+	<div style="float:left;width:60%;height:80%;" id="left">
+		<div style="width:60%;">
+		<form action="{:U('Savemoney/start_target')}" method="post">
+			<div class="input-group input-group-lg">
+			  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+			  <input type="text" class="form-control" name="name" value="目标名称">
+			</div>
+			<br>
+			<div class="input-group input-group-lg">
+			  <span class="input-group-addon">￥</span>
+			  <input type="text" class="form-control" name="price" value="目标金额">
+			</div>
+			<br>
+			<div class="input-group input-group-lg input-append date" id="datetimepicker">
+			  <input type="text" class="form-control" name="time" value="预期完成时间">
+			  <span class="input-group-addon add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+			<br>
+			<textarea style="width:500px;height:180px;" name="content">存款原因 </textarea><br>
+			<br>
+			<div class="input-group input-group-lg">
+			  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+			  <input type="text" class="form-control" name="remark" value="记录人签名">
+			</div>
+			<br>
+			<div style="text-align:center;">
+				<input type="submit" value="开始目标" class="btn btn-info">&nbsp;
+				<a href="{:U('Savemoney/index')}" class="btn btn-default"> 取消开始</a>
+			</div>
+		</form>
+		</div>
+	</div>
+	<br><br>
+	<div class="alert alert-warning alert-dismissible" role="alert" id="right" style="float:right;width:40%;">
+	  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	  <strong>
+		<p>注意! <br>目标存款将从收入扣除，并且显示存款金额，<br>当你的支出金额大于当前剩余金额，也将从存款金额扣除。</p></strong>
+		<p>(有目标进行时，不能开启下一个目标！)</p>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</block>

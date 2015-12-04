@@ -1,0 +1,26 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 导航 -->
+<div>
+	<table class="table table-bordered" style="width:60%;">
+		<thead>
+		<tr>
+		<td colspan="4" style="text-align:right;">
+			<a href="{:U('Billtype/add_bill_type')}" class="btn btn-large btn-primary">添加类型&nbsp;</a>
+		</td>
+		</tr></thead>
+		<tbody>
+		<tr>
+		<td>类型ID</td><td>类型名称</td><td>类型英文名称</td><td>操作</td>
+		</tr>
+		<foreach name="bill_type" item='bill'>
+		<tr>
+			<td>{$bill.type_id}</td><td>{$bill.title}</td><td>{$bill.name}</td>
+			<td><if condition="$user['name'] == 'admin'"><a href="{:U('Billtype/delete_type' ,array('id'=>$bill['id']))}" onclick="return confirm('删除？');">&nbsp;删除</a><else/>删除</if></td>
+		</tr>
+		</foreach>
+		
+		</tbody>
+	</table>
+</div>
+</block>

@@ -1,0 +1,53 @@
+<extend name="Public/base" />
+<block name="content">
+<table class="table">
+	<thead>
+		<tr>
+			<td><h2>添加用户</h2></td><td><a href="{:U('User/user_manage')}">返回列表</a></td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr>
+			<td></td><td></td>
+		</tr>
+	</tbody>
+</table>
+<form action="" method="post">
+<table class="table" style="width:30%;">
+	<thead>
+		<tr>
+			<td><h2></h2></td><td></td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr>
+			<td>用户昵称</td><td><input type="text" name="username"></td>
+		</tr>
+		<tr>
+			<td>密码</td><td><input type="text" name="password1"></td>
+		</tr>
+		<tr>
+			<td>再次输入密码</td><td><input type="text" name="password2"></td>
+		</tr>
+		<tr>
+			<td>配置角色</td>
+			<td>
+			<div class="control-group">
+				<div class="controls">
+				  <select id="selectError1" multiple data-rel="chosen" name="role_id[]">
+					<foreach name='option_role' item='orole'>
+					<option <if condition="$orole['name']=='Member'">selected</if> value ="{$orole.id}" >{$orole.title}</option>
+					</foreach>
+				  </select>
+				</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div style="text-align:right;width:25%;"><input type="submit" value="添加" class="btn btn-large"></div>
+</form>
+
+</block>

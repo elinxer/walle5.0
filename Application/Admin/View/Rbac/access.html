@@ -1,0 +1,63 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 页面框架 -->
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header well" data-original-title>
+			<h2><i class="icon-wrench"></i>&nbsp;权限配置</h2>
+			<div class="box-icon">
+				<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+				<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+				<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+			</div>
+		</div>
+		<!-- 页面内容 -->
+		<div class="box-content">
+			<ul class="nav nav-tabs" id="myTab">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="active"><a href="#info">&nbsp;{$meta_title}&nbsp;</a></li>
+
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<form action="{:U('Rbac/access')}" method="post">
+				<div class="tab-pane active" id="info">
+					<div id="wrap">
+						<br>
+						<a href="{:U('Rbac/index')}" class="add-app">返回</a>
+						<foreach name='node' item='app'>
+						<div class="app">
+							<p>
+								<input type="checkbox" name="access[]" value="{$app.id}_1" level='1' <if condition="$app['access']">checked='checked'</if> />
+								<strong>{$app.title}</strong>
+							</p>
+							<foreach name="app.child" item='action'>
+							<dl>
+								<dt>
+									<input type="checkbox" name="access[]" value="{$action.id}_2" level='2' <if condition="$action['access']">checked='checked'</if> />&nbsp;
+									<strong>{$action.title}</strong>
+								</dt>
+								<foreach name="action.child" item="method">
+								<dd>
+									<input type="checkbox" name="access[]" value="{$method.id}_3" level='3' <if condition="$method['access']">checked='checked'</if> />
+									<span>{$method.title}</span>
+								</dd>
+								</foreach>
+							</dl>
+							</foreach>
+						</div>
+						</foreach>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align:center;">
+				<input type="hidden" name="rid" value="{$rid}">
+				<input type="submit" value="保存" class="btn btn-large" style="margin:20px auto" />
+				
+			</div>
+			</form>
+		</div><!--/span-->
+	</div><!--/row-->
+</div>				
+</block>
+

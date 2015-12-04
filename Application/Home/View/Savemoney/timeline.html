@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$meta_title} |时间轴</title>
+
+<link rel="stylesheet" type="text/css" href="__ROOT__/PUBLIC/Timeline/css/history.css">
+
+<script type="text/javascript" src="__ROOT__/PUBLIC/Timeline/js/jquery.js"></script>
+<script type="text/javascript" src="__ROOT__/PUBLIC/Timeline/js/jquery.mousewheel.js">
+</script>
+<script type="text/javascript" src="__ROOT__/PUBLIC/Timeline/js/jquery.easing.js"></script>
+<script type="text/javascript" src="__ROOT__/PUBLIC/Timeline/js/history.js"></script>
+
+</head>
+<body>
+<div style="width:50%;">
+<div id="arrow">
+	<ul>
+		<li class="arrowup"></li>
+		<li class="arrowdown"></li>
+	</ul>
+	<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+</div>
+
+<div id="history">
+
+	<div class="title">
+		<h2>时间轴 =></h2>
+		<div id="circle">
+			<div class="cmsk"></div>
+			<div class="circlecontent">
+				<div thisyear="{$target.time|qgtime=0}" class="timeblock">
+					<span class="numf"></span>
+					<span class="nums"></span>
+					<span class="numt"></span>
+					<span class="numfo"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="timeyear">YEAR</div>
+			</div>
+			<a href="{:U('Savemoney/index')}" class="clock"></a>
+		</div>
+	</div>
+	
+	<div id="content">
+		<ul class="list">
+			<li style="margin-top:-110px;">
+				<div class="liwrap">
+					<div class="lileft">
+						<div class="date">
+							<span class="year">{$target.time|qgtime=0}</span>
+							<span class="md">{$target.time|qgtime=1}/{$target.time|qgtime=2}</span>
+						</div>
+					</div>
+					
+					<div class="point"><b></b></div>
+					
+					<div class="liright">
+						<div class="histt"><a href="#">目标开始</a></div>
+						<div class="hisct">
+							<p>你的目标金额：{$target.value}</p>
+							<p>{$target.content}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<if condition="$lock">
+			<li>
+				<div class="liwrap">
+					<div class="lileft">
+						<div class="date">
+							<span class="year">{$last_money.time|qgtime=0}</span>
+							<span class="md">{$last_money.time|qgtime=1}/{$last_money.time|qgtime=2}</span>
+						</div>
+					</div>
+					
+					<div class="point"><b></b></div>
+					
+					<div class="liright">
+						<div class="histt"><a href="#">当前存入金额</a>：{$target.name}</div>
+						<div class="hisct">
+						<p>金额：￥{$sum}</p>
+						<br>
+						<p>距离目标还差：￥{$last}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<else/>
+			<li>
+				<div class="liwrap">
+					<div class="lileft">
+						<div class="date">
+							<span class="year">{$last_money.time|qgtime=0}</span>
+							<span class="md">{$last_money.time|qgtime=1}/{$last_money.time|qgtime=2}</span>
+						</div>
+					</div>
+					
+					<div class="point"><b></b></div>
+					
+					<div class="liright">
+						<div class="histt"><a href="#">目标已实现</a>：{$target.name}</div>
+						<div class="hisct">
+							<br>
+							<p>实现总金额：￥{$sum}</p>
+							<br>
+							<p>用时：{$usetime}&nbsp;天</p>
+						</div>
+					</div>
+				</div>
+			</li>
+			</if>
+			<foreach name="target_money" item="t">
+			<li>
+				<div class="liwrap">
+					<div class="lileft">
+						<div class="date">
+							<span class="year">{$t.time|qgtime=0}</span>
+							<span class="md">{$t.time|qgtime=1}/{$t.time|qgtime=2}</span>
+						</div>
+					</div>
+					
+					<div class="point"><b></b></div>
+					
+					<div class="liright">
+						<div class="histt">
+						<a href="#">{$t.name}</a>
+						
+						</div>
+						<div class="hisct">存入金额: {$t.value}<br>{$t.content}</div>
+					</div>
+				</div>
+			</li>
+			</foreach>
+			<li>
+				<div class="liwrap">
+					<div class="lileft">
+						<div class="date">
+							<span class="year">{$target.time|qgtime=0}</span>
+							<span class="md">{$target.time|qgtime=1}/{$target.time|qgtime=2}</span>
+						</div>
+					</div>
+					
+					<div class="point"><b></b></div>
+					
+					<div class="liright">
+						<div class="histt">
+						<a href="#">今天你的存款目标开始。<br></a>
+						</div>
+						<div class="hisct">
+							<p>你的目标金额：{$target.value}</p>
+							<p>{$target.content}</p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
+</body>
+</html>

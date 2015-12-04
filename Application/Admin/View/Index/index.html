@@ -1,0 +1,104 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- content starts -->
+<if condition="$user['name'] == 'admin'">
+<div class="sortable row-fluid">
+	<a data-rel="tooltip" title="{$member_num.new} 新会员." class="well span3 top-block" href="#">
+		<span class="icon32 icon-red icon-user"></span>
+		<div>总会员</div>
+		<div>{$member_num.account}</div>
+		<span class="notification">{$member_num.new}</span>
+	</a>
+
+	<a data-rel="tooltip" title="10 new pro members." class="well span3 top-block" href="#">
+		<span class="icon32 icon-color icon-star-on"></span>
+		<div>Pro Members</div>
+		<div>228</div>
+		<span class="notification green">10</span>
+	</a>
+
+	<a data-rel="tooltip" title="$34 new sales." class="well span3 top-block" href="#">
+		<span class="icon32 icon-color icon-cart"></span>
+		<div>Sales</div>
+		<div>$13320</div>
+		<span class="notification yellow">$34</span>
+	</a>
+	
+	<a data-rel="tooltip" title="12 new messages." class="well span3 top-block" href="#">
+		<span class="icon32 icon-color icon-envelope-closed"></span>
+		<div>Messages</div>
+		<div>25</div>
+		<span class="notification red">12</span>
+	</a>
+</div>
+</if>
+<p>&nbsp;</p>
+<div style="font-size:16px;float:left;width:60%;">
+	<table class="table table-bordered table-hover" >
+		<thead><tr><td>网站基本信息</td></tr></thead>
+		<tbody>
+		<tr>
+			<td>系统版本</td><td>{$webbase.system_version}</td><td></td><td></td>
+		</tr>
+		<tr>
+			<td>系统语言</td><td>{$webbase.lang}</td><td></td><td></td>
+		</tr>
+		<tr>
+			<td>站点模板</td><td>default</td><td></td><td></td>
+		</tr>
+		<tr>
+			<td>站点地图</td><td>开启</td><td>编码</td><td>{$webbase.charset}</td>
+		</tr>
+		<tr>
+			<td>URL重写</td><td>关闭<a href=""> (点击开启)</a></td><td>安装日期</td><td>2014-08-30</td>
+		</tr>
+		<tr>
+			<td>网站标志</td>
+			<td  colspan="3">
+			<img src="__ROOT__/Public/Admin/logo.png" alt="logo" width="300" height="200" />
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div style="font-size:16px;float:right;width:35%;">
+	<table class="table table-bordered table-hover">
+		<thead><tr><td>管理员 {$user.name} 登陆记录</td></tr></thead>
+		<tbody>
+		<tr>
+			<td>IP 地址</td><td>登陆时间</td>
+		</tr>
+		<foreach name="log" item="log">
+		<tr>
+			<td>{$log.ip}</td><td>{$log.create_time|change_time=$log.create_time}</td>
+		</tr>
+		</foreach>
+		</tbody>
+	</table>
+</div>
+<div style="font-size:16px;">
+	<table class="table table-bordered table-hover">
+		<thead><tr><td>服务器信息</td></tr></thead>
+		<tbody>
+		<tr>
+			<td>操作系统</td><td>{$server.php_os}</td><td>Web服务器</td><td>{$server.webserver}</td>
+		</tr>
+		<tr>
+			<td>PHP版本</td><td>{$server.phpversion}</td><td>MySQL版本</td><td>{$server.mysql_version}</td>
+		</tr>
+		<tr>
+			<td>GD 支持</td><td>{$server.gd}</td><td>安全模式GID</td><td>{$server.safe_mode_gid}</td>
+		</tr>
+		<tr>
+			<td>Socket 支持</td><td>{$server.socket}</td><td>时区设置</td><td>{$server.time_zone}</td>
+		</tr>
+		<tr>
+			<td>Zlib</td><td>{$server.zlib}</td><td>安全模式</td><td>{$server.safe_mode}</td>
+		</tr>
+		<tr>
+			<td>文件上传大小</td><td>{$server.max_filesize}</td><td>ThinkPHP版本</td><td>{$Think.version}</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+</block>

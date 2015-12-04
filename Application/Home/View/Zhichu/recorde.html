@@ -1,0 +1,105 @@
+<extend name="Public/base" />
+<block name="content">
+<div>
+<form action="{:U('Zhichu/recorde')}" method="post">
+	<table class="bordered">
+	    <thead>
+	    <tr>   
+	        <th>&nbsp;支出名称</th>
+	        <th>&nbsp;支出金额</th>
+	        <th>&nbsp;支出时间</th>
+	        <th>&nbsp;说明（15&nbsp;字以内）</th>
+	    </tr>
+	    </thead>
+	    <tbody><tr>   
+	        <td style="width:26%;">
+	        <div class="input-group input-group-lg">
+	        	<span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+				<input type="text" class="form-control" name="name" required>
+			</div>
+	        </td>
+	        <td style="width:18%;">
+	        <div class="input-group input-group-lg">
+			  <span class="input-group-addon">￥</span>
+			  <input type="text" class="form-control" name="price">
+			</div>
+	        </td>
+	        <td style="width:20%;">
+	        	<div class="input-group input-group-lg input-append date" id="datetimepicker">
+				  <input type="text" class="form-control" name="time">
+				  <span class="input-group-addon add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+				</div>
+	        </td>
+	        <td style="width:30%;">
+		        <div class="input-group input-group-lg">
+				  <input type="text" class="form-control" name="content">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-list"></span></span>
+				</div>
+	        </td>
+	    </tr>        
+	    <tr>
+	        <td>示例（名称）</td>
+	        <td>32.0&nbsp;(单位：元)</td>    
+	        <td>2014-05-25</td>
+	        <td>饭钱</td>
+	    </tr>
+	</tbody>
+	</table>
+	<div style="text-align:right;">
+		<br>
+		<input type="hidden" name="type_id" value="1">
+		<input type="submit" value="记录" class="btn btn-info">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+</form>
+</div>
+<!-- dd -->
+<!-- s -->
+
+<div>
+&nbsp;支出总额:{$sum} &nbsp;&nbsp;&nbsp;&nbsp;
+当前支出：<if condition="$now gt 250"><span class="label label-danger">{$now}</span><else/><span class="label label-success">{$now}</span></if>
+<!-- 分页 -->
+<div class ="badoo">{$page}</div>
+</div>
+<div>
+	<table class="zebra">
+	    <thead>
+	    <tr>
+	        <th>编号（ID）</th>        
+	        <th>支出名称</th>
+	        <th>支出金额</th>
+	        <th>支出时间</th>
+	        <th>描述（说明）</th>
+	        <th style="text-align:center;">&nbsp;&nbsp;操&nbsp;作</th>
+	    </tr>
+	    </thead>
+	    <tfoot>
+	    <tr>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	    </tr>
+	    </tfoot>
+	    <foreach name="list" item="vo">
+		<tr>
+	        <td>{$vo.id}</td>
+	        <td>{$vo.name}</td>
+	        <td>{$vo.value}</td>
+	        <td>{$vo.time|change_time=5}</td>
+	        <td>{$vo.content}</td>
+	        <td style="text-align:right;">
+	        <a href="{:U('Zhichu/delete',array('id'=>$vo['id'],'belong'=>'recorde'))}" class="btn btn-default" onclick="return confirm('确定要删除吗')">删除</a>
+	        <a href="{:U('Zhichu/update',array('belong'=>'recorde','id'=>$vo['id']))}" class="btn btn-warning">修改</a>
+	        &nbsp;&nbsp;
+	        </td>
+	    </tr>
+		</foreach>
+	    
+	</table>
+</div>
+<p>&nbsp;</p>
+</block>

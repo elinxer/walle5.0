@@ -1,0 +1,72 @@
+<extend name="Public/base" />
+<block name="content">
+<div style="width:100%;height:530px;">
+<div>
+<a href="{:U('Savemoney/index')}" class="btn btn-large btn-success">返回首页</a>
+<div>
+	<div style="text-align:right;">
+		&nbsp;目标实现总额:&nbsp;{$sum} &nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	<!-- 分页 -->
+	<div class ="badoo">{$page}</div>
+</div>
+<div>
+	<table class="zebra">
+	    <thead>
+	    <tr>
+	        <th>时间轴</th>        
+	        <th>目标名称</th>
+	        <th>目标金额</th>
+	        <th>目标时间</th>
+	        <th>描述（说明）</th>
+	        <th style="text-align:right;">
+	        	<a href="" class="btn btn-info" onclick="alert('功能未开启！');">操&nbsp;作&nbsp;</a>
+	        	<a href="" class="btn btn-info" onclick="alert('功能未开启！');">批量删除</a>
+	        </th>
+	    </tr>
+	    </thead>
+	    <tfoot>
+	    <tr>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	    </tr>
+	    </tfoot>
+	    <foreach name="list" item="vo">
+	    <if condition="$vo['is_lock']">
+	    <tr class="alert alert-danger">
+	        <td><a href="{:U('Savemoney/timeline' ,array('id'=>$vo['id']))}" class="btn btn-info" >View</a></td>
+	        <td>{$vo.name}(未实现)</td>
+	        <td>{$vo.value}</td>
+	        <td>{$vo.time|change_time=5}</td>
+	        <td>{$vo.content}</td>
+	        <td style="text-align:right;">
+	        <a href="{:U('Savemoney/delete',array('id'=>$vo['id']))}" class="btn btn-default" onclick="return confirm('目标未实现，确定删除？')">删除</a>
+	        <a href="{:U('Savemoney/update',array('id'=>$vo['id']))}" class="btn btn-warning">修改</a>
+	        &nbsp;&nbsp;
+	        </td>
+	    </tr>
+	    <else/>
+		<tr>
+	        <td><a href="{:U('Savemoney/timeline' ,array('id'=>$vo['id']))}" class="btn btn-info" >View</a></td>
+	        <td>{$vo.name}</td>
+	        <td>{$vo.value}</td>
+	        <td>{$vo.time|change_time=5}</td>
+	        <td>{$vo.content}</td>
+	        <td style="text-align:right;">
+	        <a href="{:U('Savemoney/delete',array('id'=>$vo['id']))}" class="btn btn-default" onclick="return confirm('确定要删除吗')">删除</a>
+	        <a href="{:U('Savemoney/update',array('id'=>$vo['id']))}" class="btn btn-warning">修改</a>
+	        &nbsp;&nbsp;
+	        </td>
+	    </tr></if>
+		</foreach>
+	</table>
+</div>
+<p>&nbsp;</p>
+</div>
+
+</div>
+</block>

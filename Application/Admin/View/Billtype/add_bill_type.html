@@ -1,0 +1,18 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 导航 -->
+<div>
+	<form action="{:U('Billtype/add_bill_type')}" method="post">
+	<table class="table" style="width:66%;">
+		<thead><tr><td><a href="{:U('Billtype/index')}" class="btn btn-large btn-primary">返回列表</a></td><td></td></tr></thead>
+		<tbody>
+		<tr><td>类型名称</td><td><input type="text" name="title"></td></tr>
+		<tr><td>英文名称</td><td><input type="text" name="name"></td></tr>
+		<tr><td>类型定义ID</td><td><input type="text" name="type_id" ></td></tr>
+		
+		<tr><td colspan="2" style="text-align:center;"><input type="submit" value="添加" class="btn btn-large"></td></tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+</block>

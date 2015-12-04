@@ -1,0 +1,22 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- d -->
+<div>
+	<div><a href="{:U('System/index')}" class="btn btn-info">返回</a><br><br>
+	<table class="table table-hover">
+		<tr><th>备份名称</th><!-- <th>文件大小</th> --><th>备份时间</th><th>备份操作</th></tr>
+		<foreach name="backlist" item="v">
+		<tr>
+			<td>{$v.filename}</td>
+			<!-- <td>无法获取</td> -->
+			<td>{$v.time}</td>
+			<td><a href="{:U('Baksql/recover',array('file'=>$v['filename']))}">还原</a>&nbsp;&nbsp;<a href="{:U('Baksql/deletebak',array('file'=>$v['filename']))}" onclick="return confirm('请确认删除？（备份文件十分重要）');">删除</a></td>
+		</tr>
+		</foreach>
+	</table>
+	</div>
+<br>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</block>

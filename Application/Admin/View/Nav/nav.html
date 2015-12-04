@@ -1,0 +1,29 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 导航 -->
+<div>
+	<table class="table">
+		<thead><tr><td><a href="{:U('Nav/add_nav')}" class="btn btn-large btn-primary">新增功能</a></td><td></td></tr></thead>
+		<tbody>
+		<tr>
+		<td>功能名称</td><td>链接地址</td><td>打开方式</td><td>排序</td><td>上层ID</td><td>操作</td>
+		</tr>
+		<foreach name="nav" item="nav">
+		<tr>
+			<td><if condition="$nav['type'] == 0">{$nav.title}<else/>--{$nav.title}</if></td>
+			<td>{$nav.url}</td>
+			<td>{$nav.target}</td>
+			<td>{$nav.sort}</td>
+			<td>{$nav.type}</td>
+			<td><a href="{:U('Nav/edit_nav' , array('nav_id'=>$nav['id']))}">编辑 </a>
+			<if condition="$user['name'] == 'admin'">
+			<a href="{:U('Nav/delete_nav' , array('nav_id'=>$nav['id']))}" onclick="return confirm('删除？');">删除</a>
+			<else/>删除</if>
+			</td>
+		</tr>
+		</foreach>
+		<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+		</tbody>
+	</table>
+</div>
+</block>

@@ -1,0 +1,54 @@
+<include file="Public/head" />
+<body>
+<include file="Public/topbar" />
+<div class="container-fluid">
+<div class="row-fluid">
+<include file="Public/leftmenu" />
+<noscript>
+	<div class="alert alert-block span10">
+		<h4 class="alert-heading">Warning!</h4>
+		<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+	</div>
+</noscript>
+<!-- content starts -->
+<div id="content" class="span10">
+<div>
+	<ul class="breadcrumb">
+		<li>
+			<a href="{:U('Admin/Index/index')}">控制面板</a> <span class="divider">/</span>
+		</li>
+		<li>
+			<a href="#">{$meta_title}</a>
+		</li>
+	</ul>
+</div>
+<block name='content'>
+	<!-- 继承内容区域 -->
+</block>
+
+<!-- content ends -->
+	</div><!--/#content.span10-->
+</div><!--/fluid-row-->
+<!--settings start -->
+<hr>
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h3>{$setting_name}设置</h3>
+	</div>
+	<div class="modal-body">
+		<p>Here settings can be configured...</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">关闭</a>
+		<a href="#" class="btn btn-primary">保存更改</a>
+	</div>
+</div>
+<!-- settings end -->
+
+<include file="Public/footer" />
+
+</div><!--/.fluid-container-->
+
+</body>
+</html>

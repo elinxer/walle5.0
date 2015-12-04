@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 页面框架 -->
+
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header well" data-original-title>
+			<h2><i class="icon-wrench"></i>&nbsp;权限配置</h2>
+			<div class="box-icon">
+				<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+				<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+				<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+			</div>
+		</div>
+		<!-- 页面内容 -->
+		<div class="box-content">
+		<ul class="nav nav-tabs" id="myTab">
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="active"><a href="#info">角色管理</a></li>
+			<li><a href="#node">节点管理</a></li>
+			
+			<li><a href="#addrole">新增角色</a></li>
+			<li><a href="#explain">配置值说明</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane active" id="info">
+			<include file='Rbac/role'/>
+			</div>
+
+			<div class="tab-pane" id="node">
+			<include file='Rbac/node' />
+			</div>
+			<div class="tab-pane" id="addrole">
+			<include file='Rbac/add_role' />
+			</div>
+			<div class="tab-pane" id="explain"><include file='Rbac/explain' /></div>
+		</div>
+	</div>
+	</div><!--/span-->
+
+</div><!--/row-->
+					
+</block>

@@ -1,0 +1,19 @@
+
+<table class="table table-bordered table-hover" style="width:80%;">
+
+<thead><tr><td>角色名称</td><td>英文名</td><td>描述</td><td>状态</td><td style="text-align:center;">操作</td></tr></thead>
+<tbody>
+<foreach name='role' item='role'>
+<tr>
+	<td>{$role.title}</td>
+	<td>{$role.name}</td>
+	<td>{$role.remark}</td>
+	<td><if condition="$role.status">开启<else/>关闭</if></td>
+	<td><a href="{:U('Rbac/access' ,array('rid'=>$role['id']))}">配置权限</a></td>
+</tr>
+</foreach>
+</tbody>
+
+
+
+</table>

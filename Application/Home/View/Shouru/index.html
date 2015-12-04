@@ -1,0 +1,56 @@
+<extend name="Public/base" />
+<block name="content">
+<div>
+<a href="{:U('Shouru/recorde')}" class="btn btn-large btn-success">记录收入</a>
+<div>
+	<div style="text-align:right;">
+		&nbsp;收入总额:&nbsp;{$sum} &nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	<!-- 分页 -->
+	<div class ="badoo">{$page}</div>
+</div>
+<div>
+	<table class="zebra">
+	    <thead>
+	    <tr>
+	        <th>编号（ID）</th>        
+	        <th>收入名称</th>
+	        <th>收入金额</th>
+	        <th>收入时间</th>
+	        <th>描述（说明）</th>
+	        <th style="text-align:right;">
+	        	<a href="" class="btn btn-info" onclick="alert('功能未开启！');">操&nbsp;作&nbsp;</a>
+	        	<a href="" class="btn btn-info" onclick="alert('功能未开启！');">批量删除</a>
+	        </th>
+	    </tr>
+	    </thead>
+	    <tfoot>
+	    <tr>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	        <td></td>
+	    </tr>
+	    </tfoot>
+	    <foreach name="list" item="vo">
+		<tr>
+	        <td>{$vo.id}</td>
+	        <td>{$vo.name}</td>
+	        <td>{$vo.value}</td>
+	        <td>{$vo.time|change_time=5}</td>
+	        <td>{$vo.content}</td>
+	        <td style="text-align:right;">
+	        <a href="{:U('Shouru/delete',array('id'=>$vo['id'],'belong'=>'index'))}" class="btn btn-default" onclick="return confirm('确定要删除吗')">删除</a>
+	        <a href="{:U('Shouru/update',array('belong'=>'index','id'=>$vo['id']))}" class="btn btn-warning">修改</a>
+	        &nbsp;&nbsp;
+	        </td>
+	    </tr>
+		</foreach>
+	    
+	</table>
+</div>
+<p>&nbsp;</p>
+</div>
+</block>

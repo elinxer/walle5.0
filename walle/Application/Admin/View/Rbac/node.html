@@ -1,0 +1,32 @@
+<div id="wrap">
+<br>
+<a href="{:U('Rbac/add_node')}" class="add-app">添加应用</a>
+<foreach name='node' item='app'>
+<div class="app">
+	<p>
+		<strong>{$app.title}({$app.name})</strong>
+		<a href="{:U('Rbac/add_node' , array('pid'=>$app['id'] , 'level'=>2))}">&nbsp;添加控制器</a>
+		&nbsp;&nbsp;<a href="{:U('Rbac/delete_node' ,array('node_id'=>$app['id']))}" onclick="return confirm('删除？');">删除</a>
+	</p>
+	<foreach name="app.child" item='action'>
+	<dl>
+		<dt>
+			<strong>{$action.title}({$action.name})</strong>
+			<a href="{:U('Rbac/add_node' , array('pid'=>$action['id'] , 'level'=>3))}">&nbsp;添加方法</a>
+			&nbsp;&nbsp;<a href="{:U('Rbac/delete_node' ,array('node_id'=>$action['id']))}" onclick="return confirm('删除？');">删除</a>
+		</dt>
+		<foreach name="action.child" item="method">
+		<dd>
+			<span>{$method.title}({$method.name})</span>
+			&nbsp;&nbsp;<a href="{:U('Rbac/delete_node' ,array('node_id'=>$method['id']))}" onclick="return confirm('删除？');">删除</a>
+		</dd>
+		</foreach>
+	</dl>
+	</foreach>
+</div>
+
+</foreach>
+
+</div>
+
+

@@ -1,0 +1,18 @@
+<extend name="Public/base" />
+<block name="content">
+<!-- 导航 -->
+<div>
+	<form action="{:U('Nav/add_nav')}" method="post">
+	<table class="table" style="width:66%;">
+		<thead><tr><td><a href="{:U('Nav/nav')}" class="btn btn-large btn-primary">返回列表</a></td><td></td></tr></thead>
+		<tbody>
+		<tr><td>导功能名称</td><td><input type="text" name="title"></td></tr>
+		<tr><td>链接地址</td><td><input type="text" name="url"></td></tr>
+		<tr><td>上层ID</td><td><input type="text" name="type" value="0"></td></tr>
+		<tr><td>显示顺序</td><td><input type="text" name="sort" value="1"></td></tr>
+		<tr><td colspan="2" style="text-align:center;"><input type="submit" value="添加" class="btn btn-large"></td></tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+</block>
